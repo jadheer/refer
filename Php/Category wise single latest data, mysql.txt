@@ -1,0 +1,71 @@
+SELECT
+    d1.title,
+    d1.value,
+    d2.full_payment_value,
+    d2.half_payment_value
+FROM
+    denominations d1
+JOIN
+    (
+    SELECT
+        t1.*
+    FROM
+        denomination_daily_rate_cards t1
+    JOIN
+        (
+        SELECT
+            denomination_id,
+            MAX(created_on) created_on
+        FROM
+            denomination_daily_rate_cards
+        GROUP BY
+            denomination_id
+    ) t2
+ON
+    t1.denomination_id = t2.denomination_id AND t1.created_on = t2.created_on
+) d2
+WHERE
+    d1.denomination_id = d2.denomination_id
+
+
+---------------------------------------------------------------------------------------------------------------------------
+Categorise array based on common id or title
+---------------------------------------------------------------------------------------------------------------------------
+            $newOptionKey = [];
+            $newKey = 0;
+            $arr_success_stories_btm = [];
+
+            foreach ($obj_success_stories_btm as $obj_success_story => $optionValue) {
+                if(!in_array($optionValue->case_study_id,$newOptionKey)){
+                    ++$newKey;
+                    $arr_success_stories_btm[$newKey]["case_study_id"] = $optionValue->case_study_id;
+                    $arr_success_stories_btm[$newKey]["short_title"] = $optionValue->short_title;
+                    $arr_success_stories_btm[$newKey]["slug"] = $optionValue->slug;
+                }
+                $arr_success_stories_btm[$newKey]["title"][] = $optionValue->title;
+                $arr_success_stories_btm[$newKey]["count_val"][] = $optionValue->count_val;
+                $newOptionKey[]  = $optionValue->case_study_id;
+            }
+----------------------------------------------------------------------------------------------------------
+Get array details based on value
+----------------------------------------------------------------------------------------------------------
+
+$arr = [
+  ['Name' => "hi",'Age' => 15],
+  ['Name' => "hello",'Age' => 16],
+  ['Name' => "hui",'Age' => 19],
+  ['Name' => "hey",'Age' => 43],
+];
+
+echo"<pre>";print_r($arr);
+
+      $searchedValue = 19;
+      $selected        =  array_filter(
+          $arr,
+          function ($e) use (&$searchedValue) {
+              return $e['Age'] == $searchedValue;
+          }
+      );
+
+echo"<pre>";print_r($selected);
+

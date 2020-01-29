@@ -1,0 +1,11 @@
+Multiple authentication setup:-
+
+    https://www.larashout.com/backend-admin-authentication
+
+E-commerce website sample:-
+
+    https://github.com/LaraShout/laravel-ecommerce-application
+
+Seeder/Factory setup:-
+
+    https://codebriefly.com/basic-use-model-factories-laravel/
