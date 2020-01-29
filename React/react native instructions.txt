@@ -1,0 +1,56 @@
+// Install react native dependies to create a project
+npm install  -g react-native-cli
+
+//create reactive native project with showrtestway project and folder name
+react-native init showrtestway
+
+//create a file in android folder with name local.properties and add sdk path
+sdk.dir = C:\\Users\\acer\\AppData\\Local\\Android\\sdk
+
+//added a path to user varibles
+C:\Users\acer\AppData\Local\Android\sdk\platform-tools
+
+// this will run the android application to connected device
+react-native run-android
+
+react-native start / npm start
+
+Issues and fixes:-
+
+npm cache clean --force 
+npm start -- --reset-cache
+
+npm uninstall -g npm
+
+npm install react-router-native
+npm install react-navigation
+
+///////////////////////////////////////
+Wifi debugging:-
+
+In mobile:-
+
+Install a terminal app on the device (like Android Terminal Emulator) Type the following
+
+su
+setprop service.adb.tcp.port 5555
+stop adbd
+start adbd
+ip addr show
+
+In system:-
+
+adb connect 192.168.43.82
+adb shell ifconfig //display connected device ip
+adb devices //display connected devices
+
+
+After installing an app got to option->dev settings->debug server host & port for device and add wifi ip address of the system with :8081
+
+
+///////////////////////////////////////////////////
+
+=> I got a null issue gesturehandler for react navigation
+
+	npm uninstall react-navigation
+	npm install react-navigation@2.18.2 --save //solved the problem

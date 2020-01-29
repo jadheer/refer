@@ -1,0 +1,22 @@
+Download and setup elasticsearch :-
+
+1. Download elastic search file.
+2. Read documentation. (https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html)
+3. go to config/elasticsearch.yml file and rename cluster name and node name (ex:- node-1 , node-2)
+4. run the cluster by:-
+    go to particular node and run : bin/elasticsearch
+5. got to browser and run http://127.0.0.1:9200/_cluster/state
+
+
+Commands:- (For proper readable format use firefox)
+
+http://127.0.0.1:9201/_cat/indices?v  //List all indices
+http://127.0.0.1:9201/blogs/_mapping  //Will show all the elements(columns) of an index
+http://127.0.0.1:9201/blogs/blog/_search //Will show all documents of and index
+http://127.0.0.1:9201/blogs/blog/81 //Will display document based on id
+
+Index OPerations:-
+
+curl -XDELETE localhost:9200/authors //Delete an index
+
+https://stackoverflow.com/questions/13626617/specify-which-fields-are-indexed-in-elasticsearch

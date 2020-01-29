@@ -1,0 +1,514 @@
+********
+Database
+********
+
+-------------------
+|||||||||| Triggers
+-------------------
+
+Referance Documentation:- https://drive.google.com/file/d/16a6b9jo1W-lKRjilgkJMMA3Xo8N2LxTZ/view?usp=sharing
+
+In MySQL, a trigger is a set of sql statements that is invoked automatically when a change is made in to the data of associated table such as insert, update, or delete. For example, you can define a trigger that is invoked automatically before a new row is inserted into a table.
+
+MySQL supports triggers that are invoked in response to the INSERT, UPDATE or DELETE event.
+
+ie,
+
+    BEFORE INSERT
+    AFTER INSERT
+    BEFORE UPDATE
+    AFTER UPDATE
+    BEFORE DELETE
+    AFTER DELETE
+
+Syntax:-
+
+    CREATE TRIGGER trigger_name trigger_time trigger_event
+    ON table_name
+    FOR EACH ROW
+    BEGIN
+    .....
+    .....
+    END;
+
+The SQL standard defines two types of triggers: row-level triggers and statement-level triggers.
+
+A row-level trigger is activated for each row that is inserted, updated, or deleted.  For example, if a table has 100 rows inserted, updated, or deleted, the trigger is automatically invoked 100 times for the 100 rows affected.
+
+A statement-level trigger is executed once for each transaction regardless of how many rows are inserted, updated, or deleted.
+MySQL supports only row-level triggers. It doesn’t support statement-level triggers.
+
+USE CASE:-
+
+For a table for ex:- employees, if we want to keep track of changes made to that table like name change etc, we will create another table for ex:- employees_audit to store the changes
+
+---------------------------
+|||||||||| Stored Procedure
+---------------------------
+
+A stored procedure is group of sql statements. If you have a situation where you write the same query over and over again, you can save the specific query as a stored procedure and call it just by it's name.
+
+or
+
+It is set a of sql queries stored on database server which is used to perform set of operation which can accept and return parameters
+
+Referance Documentation:- https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html
+
+Syntax:-
+
+DELIMITER //
+CREATE PROCEDURE employee_details()
+BEGIN
+    SELECT fname,lname FROM emp;
+END //
+DELIMITER ;
+
+Call the procedure:-
+
+CALL `employee_details`();
+
+----------------------------------------
+|||||||||| Get second max of salary list
+----------------------------------------
+
+SELECT salary FROM employees WHERE salary = (SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees))
+
+SELECT MAX(salary) FROM `emp` WHERE salary NOT IN (SELECT MAX(salary) FROM `emp`)
+
+SELECT salary FROM `emp` ORDER by salary DESC LIMIT 1,1
+
+----------------------------------------------------------
+|||||||||| What's the difference between HAVING and WHERE?
+----------------------------------------------------------
+
+HAVING: is used to check conditions after the aggregation takes place.
+WHERE: is used to check conditions before the aggregation takes place.
+
+This code:
+
+select City
+From Address
+Where State = 'MA'
+Group By City
+Gives you a table of all cities in MA and the number of addresses in each city.
+
+This code:
+
+SELECT
+    ordernumber,
+    SUM(quantityOrdered) AS itemsCount,
+    SUM(priceeach*quantityOrdered) AS total
+FROM
+    orderdetails
+GROUP BY
+   ordernumber
+HAVING
+   total > 1000;
+
+***
+PHP
+***
+
+--------------------------------------
+|||||||||| Multiple Inheritance in PHP
+--------------------------------------
+
+Multiple inheritance means inheriting from two parents
+
+PHP doesn’t support multiple inheritance but by using Interfaces in PHP or using Traits in PHP instead of classes, we can implement it.
+
+----------------
+|||||||||| Solve
+----------------
+
+$done = "";
+$last = "";
+
+$hey  =  "hello";
+$hello = "bye";
+$$hello  =& $$hey;
+$$hello = "done";
+$$$hello = "last";
+$$$$hello = "final";
+
+echo $hello;
+
+...................
+
+$bye = "hello";
+$var = "hi";
+$foo = &$var;
+$foo = "wow";
+$show = &$foo;
+$show = "hey";
+$$show = &$bye;
+$hey = "show";
+
+echo $bye;
+
+
+--------------------------
+|||||||||| Array functions
+--------------------------
+
+Function                        |       Description
+---------------------------------------------------------------------------------------------------------------------
+array()                         =>  Creates an array
+array_change_key_case()         =>  Changes all keys in an array to lowercase or uppercase
+array_chunk()                   =>  Splits an array into chunks of arrays
+array_column()                  =>  Returns the values from a single column in the input array
+array_combine()                 =>  Creates an array by using the elements from one "keys" array and one "values" array
+array_count_values()            =>  Counts all the values of an array
+array_diff()                    =>  Compare arrays, and returns the differences (compare values only)
+array_diff_assoc()              =>  Compare arrays, and returns the differences (compare keys and values)
+array_diff_key()                =>  Compare arrays, and returns the differences (compare keys only)
+array_diff_uassoc()             =>  Compare arrays, and returns the differences (compare keys and values, using a user-defined key comparison function)
+array_diff_ukey()               =>  Compare arrays, and returns the differences (compare keys only, using a user-defined key comparison function)
+array_fill()                    =>  Fills an array with values
+array_fill_keys()               =>  Fills an array with values, specifying keys
+array_filter()                  =>  Filters the values of an array using a callback function
+array_flip()                    =>  Flips/Exchanges all keys with their associated values in an array
+array_intersect()               =>  Compare arrays, and returns the matches (compare values only)
+array_intersect_assoc()         =>  Compare arrays and returns the matches (compare keys and values)
+array_intersect_key()           =>  Compare arrays, and returns the matches (compare keys only)
+array_intersect_uassoc()        =>  Compare arrays, and returns the matches (compare keys and values, using a user-defined key comparison function)
+array_intersect_ukey()          =>  Compare arrays, and returns the matches (compare keys only, using a user-defined key comparison function)
+array_key_exists()              =>  Checks if the specified key exists in the array
+array_keys()                    =>  Returns all the keys of an array
+array_map()                     =>  Sends each value of an array to a user-made function, which returns new values
+array_merge()                   =>  Merges one or more arrays into one array
+array_merge_recursive()         =>  Merges one or more arrays into one array recursively
+array_multisort()               =>  Sorts multiple or multi-dimensional arrays
+array_pad()                     =>  Inserts a specified number of items, with a specified value, to an array
+array_pop()                     =>  Deletes the last element of an array
+array_product()                 =>  Calculates the product of the values in an array
+array_push()                    =>  Inserts one or more elements to the end of an array
+array_rand()                    =>  Returns one or more random keys from an array
+array_reduce()                  =>  Returns an array as a string, using a user-defined function
+array_replace()                 =>  Replaces the values of the first array with the values from following arrays
+array_replace_recursive()       =>  Replaces the values of the first array with the values from following arrays recursively
+array_reverse()                 =>  Returns an array in the reverse order
+array_search()                  =>  Searches an array for a given value and returns the key
+array_shift()                   =>  Removes the first element from an array, and returns the value of the removed element
+array_slice()                   =>  Returns selected parts of an array
+array_splice()                  =>  Removes and replaces specified elements of an array
+array_sum()                     =>  Returns the sum of the values in an array
+array_udiff()                   =>  Compare arrays, and returns the differences (compare values only, using a user-defined key comparison function)
+array_udiff_assoc()             =>  Compare arrays, and returns the differences (compare keys and values, using a built-in function to compare the keys and a user-defined function to compare the values)
+array_udiff_uassoc()            =>  Compare arrays, and returns the differences (compare keys and values, using two user-defined key comparison functions)
+array_uintersect()              =>  Compare arrays, and returns the matches (compare values only, using a user-defined key comparison function)
+array_uintersect_assoc()        =>  Compare arrays, and returns the matches (compare keys and values, using a built-in function to compare the keys and a user-defined function to compare the values)
+array_uintersect_uassoc()       =>  Compare arrays, and returns the matches (compare keys and values, using two user-defined key comparison functions)
+array_unique()                  =>  Removes duplicate values from an array
+array_unshift()                 =>  Adds one or more elements to the beginning of an array
+array_values()                  =>  Returns all the values of an array
+array_walk()                    =>  Applies a user function to every member of an array
+array_walk_recursive()          =>  Applies a user function recursively to every member of an array
+arsort()                        =>  Sorts an associative array in descending order, according to the value
+asort()                         =>  Sorts an associative array in ascending order, according to the value
+compact()                       =>  Create array containing variables and their values
+count()                         =>  Returns the number of elements in an array
+current()                       =>  Returns the current element in an array
+each()                          =>  Deprecated from PHP 7.2. Returns the current key and value pair from an array
+end()                           =>  Sets the internal pointer of an array to its last element
+extract()                       =>  Imports variables into the current symbol table from an array
+in_array()                      =>  Checks if a specified value exists in an array
+key()                           =>  Fetches a key from an array
+krsort()                        =>  Sorts an associative array in descending order, according to the key
+ksort()                         =>  Sorts an associative array in ascending order, according to the key
+list()                          =>  Assigns variables as if they were an array
+natcasesort()                   =>  Sorts an array using a case insensitive "natural order" algorithm
+natsort()                       =>  Sorts an array using a "natural order" algorithm
+next()                          =>  Advance the internal array pointer of an array
+pos()                           =>  Alias of current()
+prev()                          =>  Rewinds the internal array pointer
+range()                         =>  Creates an array containing a range of elements
+reset()                         =>  Sets the internal pointer of an array to its first element
+rsort()                         =>  Sorts an indexed array in descending order
+shuffle()                       =>  Shuffles an array
+sizeof()                        =>  Alias of count()
+sort()                          =>  Sorts an indexed array in ascending order
+uasort()                        =>  Sorts an array by values using a user-defined comparison function
+uksort()                        =>  Sorts an array by keys using a user-defined comparison function
+usort()                         =>  Sorts an array using a user-defined comparison function
+
+
+---------------------------
+|||||||||| String functions
+---------------------------
+
+Function                        |       Description
+----------------------------------------------------------------------------------------------------------
+addcslashes()                   =>  Returns a string with backslashes in front of the specified characters
+addslashes()                    =>  Returns a string with backslashes in front of predefined characters
+bin2hex()                       =>  Converts a string of ASCII characters to hexadecimal values
+chop()                          =>  Removes whitespace or other characters from the right end of a string
+chr()                           =>  Returns a character from a specified ASCII value
+chunk_split()                   =>  Splits a string into a series of smaller parts
+convert_cyr_string()            =>  Converts a string from one Cyrillic character-set to another
+convert_uudecode()              =>  Decodes a uuencoded string
+convert_uuencode()              =>  Encodes a string using the uuencode algorithm
+count_chars()                   =>  Returns information about characters used in a string
+crc32()                         =>  Calculates a 32-bit CRC for a string
+crypt()                         =>  One-way string hashing
+echo()                          =>  Outputs one or more strings
+explode()                       =>  Breaks a string into an array
+fprintf()                       =>  Writes a formatted string to a specified output stream
+get_html_translation_table()    =>  Returns the translation table used by htmlspecialchars() and htmlentities()
+hebrev()                        =>  Converts Hebrew text to visual text
+hebrevc()                       =>  Converts Hebrew text to visual text and new lines (\n) into <br>
+hex2bin()                       =>  Converts a string of hexadecimal values to ASCII characters
+html_entity_decode()            =>  Converts HTML entities to characters
+htmlentities()                  =>  Converts characters to HTML entities
+htmlspecialchars_decode()       =>  Converts some predefined HTML entities to characters
+htmlspecialchars()              =>  Converts some predefined characters to HTML entities
+implode()                       =>  Returns a string from the elements of an array
+join()                          =>  Alias of implode()
+lcfirst()                       =>  Converts the first character of a string to lowercase
+levenshtein()                   =>  Returns the Levenshtein distance between two strings
+localeconv()                    =>  Returns locale numeric and monetary formatting information
+ltrim()                         =>  Removes whitespace or other characters from the left side of a string
+md5()                           =>  Calculates the MD5 hash of a string
+md5_file()                      =>  Calculates the MD5 hash of a file
+metaphone()                     =>  Calculates the metaphone key of a string
+money_format()                  =>  Returns a string formatted as a currency string
+nl_langinfo()                   =>  Returns specific local information
+nl2br()                         =>  Inserts HTML line breaks in front of each newline in a string
+number_format()                 =>  Formats a number with grouped thousands
+ord()                           =>  Returns the ASCII value of the first character of a string
+parse_str()                     =>  Parses a query string into variables
+print()                         =>  Outputs one or more strings
+printf()                        =>  Outputs a formatted string
+quoted_printable_decode()       =>  Converts a quoted-printable string to an 8-bit string
+quoted_printable_encode()       =>  Converts an 8-bit string to a quoted printable string
+quotemeta()                     =>  Quotes meta characters
+rtrim()                         =>  Removes whitespace or other characters from the right side of a string
+setlocale()                     =>  Sets locale information
+sha1()                          =>  Calculates the SHA-1 hash of a string
+sha1_file()                     =>  Calculates the SHA-1 hash of a file
+similar_text()                  =>  Calculates the similarity between two strings
+soundex()                       =>  Calculates the soundex key of a string
+sprintf()                       =>  Writes a formatted string to a variable
+sscanf()                        =>  Parses input from a string according to a format
+str_getcsv()                    =>  Parses a CSV string into an array
+str_ireplace()                  =>  Replaces some characters in a string (case-insensitive)
+str_pad()                       =>  Pads a string to a new length
+str_repeat()                    =>  Repeats a string a specified number of times
+str_replace()                   =>  Replaces some characters in a string (case-sensitive)
+str_rot13()                     =>  Performs the ROT13 encoding on a string
+str_shuffle()                   =>  Randomly shuffles all characters in a string
+str_split()                     =>  Splits a string into an array
+str_word_count()                =>  Count the number of words in a string
+strcasecmp()                    =>  Compares two strings (case-insensitive)
+strchr()                        =>  Finds the first occurrence of a string inside another string (alias of strstr())
+strcmp()                        =>  Compares two strings (case-sensitive)
+strcoll()                       =>  Compares two strings (locale based string comparison)
+strcspn()                       =>  Returns the number of characters found in a string before any part of some specified characters are found
+strip_tags()                    =>  Strips HTML and PHP tags from a string
+stripcslashes()                 =>  Unquotes a string quoted with addcslashes()
+stripslashes()                  =>  Unquotes a string quoted with addslashes()
+stripos()                       =>  Returns the position of the first occurrence of a string inside another string (case-insensitive)
+stristr()                       =>  Finds the first occurrence of a string inside another string (case-insensitive)
+strlen()                        =>  Returns the length of a string
+strnatcasecmp()                 =>  Compares two strings using a "natural order" algorithm (case-insensitive)
+strnatcmp()                     =>  Compares two strings using a "natural order" algorithm (case-sensitive)
+strncasecmp()                   =>  String comparison of the first n characters (case-insensitive)
+strncmp()                       =>  String comparison of the first n characters (case-sensitive)
+strpbrk()                       =>  Searches a string for any of a set of characters
+strpos()                        =>  Returns the position of the first occurrence of a string inside another string (case-sensitive)
+strrchr()                       =>  Finds the last occurrence of a string inside another string
+strrev()                        =>  Reverses a string
+strripos()                      =>  Finds the position of the last occurrence of a string inside another string (case-insensitive)
+strrpos()                       =>  Finds the position of the last occurrence of a string inside another string (case-sensitive)
+strspn()                        =>  Returns the number of characters found in a string that contains only characters from a specified charlist
+strstr()                        =>  Finds the first occurrence of a string inside another string (case-sensitive)
+strtok()                        =>  Splits a string into smaller strings
+strtolower()                    =>  Converts a string to lowercase letters
+strtoupper()                    =>  Converts a string to uppercase letters
+strtr()                         =>  Translates certain characters in a string
+substr()                        =>  Returns a part of a string
+substr_compare()                =>  Compares two strings from a specified start position (binary safe and optionally case-sensitive)
+substr_count()                  =>  Counts the number of times a substring occurs in a string
+substr_replace()                =>  Replaces a part of a string with another string
+trim()                          =>  Removes whitespace or other characters from both sides of a string
+ucfirst()                       =>  Converts the first character of a string to uppercase
+ucwords()                       =>  Converts the first character of each word in a string to uppercase
+vfprintf()                      =>  Writes a formatted string to a specified output stream
+vprintf()                       =>  Outputs a formatted string
+vsprintf()                      =>  Writes a formatted string to a variable
+wordwrap()                      =>  Wraps a string to a given number of characters
+
+------------------------------
+|||||||||| HTTP Response Codes
+------------------------------
+
+1×× Informational
+
+100 Continue
+102 Processing
+
+2×× Success
+
+200 OK
+201 Created
+202 Accepted
+
+3×× Redirection
+
+301 Moved Permanently
+302 Found
+
+4×× Client Error
+
+400 Bad Request
+401 Unauthorized
+402 Payment Required
+403 Forbidden
+404 Not Found
+408 Request Timeout
+413 Payload Too Large
+414 Request-URI Too Long
+423 Locked
+429 Too Many Requests
+
+5×× Server Error
+
+500 Internal Server Error
+501 Not Implemented
+502 Bad Gateway
+503 Service Unavailable
+504 Gateway Timeout
+507 Insufficient Storage
+
+
+************
+Codeigniter
+************
+
+----------------
+|||||||||| Hook
+----------------
+
+CodeIgniter’s Hooks feature provides a means to tap into and modify the inner workings of the framework without hacking the core files.
+
+Hook is like middleware implementation in codeigniter.
+
+Note : Hooks feature should be enable in config file,
+$config[‘enable_hooks’] = TRUE;
+
+Scenario:-
+
+If we want to check if user session_id exists/logged in to access the functions, we can implement using hook concept.
+
+Types:-
+
+pre_system Called very early during system execution. Only the benchmark and hooks class have been loaded at this point. No routing or other processes have happened.
+
+pre_controller Called immediately prior to any of your controllers being called. All base classes, routing, and security checks have been done.
+
+post_controller_constructor Called immediately after your controller is instantiated, but prior to any method calls happening.
+
+post_controller Called immediately after your controller is fully executed.
+
+display_override Overrides the _display() function, used to send the finalized page to the web browser at the end of system execution. This permits you to use your own display methodology. Note that you will need to reference the CI superobject with $this->CI =& get_instance() and then the finalized data will be available by calling $this->CI->output->get_output()
+
+cache_override Enables you to call your own function instead of the _display_cache() function in the output class. This permits you to use your own cache display mechanism.
+
+post_system Called after the final rendered page is sent to the browser, at the end of system execution after the finalized data is sent to the browser.
+
+----------------------------------------------------------
+|||||||||| How to connect multiple database in codeigniter
+----------------------------------------------------------
+
+Referance Documentation:- https://www.codexworld.com/connect-use-multiple-database-codeigniter/
+
+
+How:-
+
+//Default database configuration
+$db['default'] = array(
+    'dsn'       => '',
+    'hostname' => 'localhost',
+    'username' => 'db_username',
+    'password' => 'db_password',
+    'database' => 'db_name',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt'  => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
+//Another database configuration
+$db['another_db'] = array(
+    'dsn'       => '',
+    'hostname' => 'localhost',
+    'username' => 'db_username',
+    'password' => 'db_password',
+    'database' => 'db_name2',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt'  => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
+//Load another database
+$DB2 = $this->load->database('another_db', TRUE); //By setting the second parameter to TRUE (boolean) the function will return the database object.
+
+//Default database query
+$this->db->select('first_name, last_name');
+$this->db->from('users');
+$this->db->where('id', 99);
+$query = $this->db->get();
+
+
+//Another database query
+$DB2->select('image');
+$DB2->from('cdn_images');
+$DB2->where('id', 25);
+$query = $DB2->get();
+
+------------------------------------------------
+|||||||||| Difference between helper and library
+------------------------------------------------
+
+There is a question I ask myself when deciding this that I think will help you as well. The question is: Am I providing a feature to my framework or am I consolidating?
+
+If you have a feature that you are adding to your framework, then you'll want to create a library for that. Form validation, for example, is a feature that you are adding to a framework. Even though you can do form validation without this library, you're creating a standard system for validation which is a feature.
+
+However, there is also a form helper which helps you create the HTML of forms. The big difference from the form validation library is that the form helper isn't creating a new feature, its just a set of related functions that help you write the HTML of forms properly.
+
+Hopefully this differentiation will help you as it has me.
+
+---------------------
+|||||||||| Inhibitors
+---------------------
+
+Inhibitor in Codeigniter is a class in Codeigniter which internally uses native error handling functions of PHP like set_error_handler,get_exception_handler, register_shutdown_function to handle parse errors, exceptions, and fatal errors.
+
+Inhibitor class of Codeigniter helps you to formats the error messages, logs the error, mail the error, redirects to a "placatory" view if any error specific error has occurred.
+
+-----------------------------------------------------
+|||||||||| Custom commands for data insertion laravel
+-----------------------------------------------------
+
+https://laravel.com/docs/5.7/artisan

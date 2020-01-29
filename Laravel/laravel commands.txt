@@ -1,0 +1,176 @@
+Steps did for installing and using laravel:-
+
+- In command prompt, changed the directory to www
+- Type command:-
+
+	composer create-project laravel/laravel=5.5 your-project-name --prefer-dist
+
+	composer create-project laravel/laravel blog
+		which will create a folder with blog and all necessary  files inside it.
+
+- Get current version
+
+	php artisan --version
+
+- To create authentication
+
+	php artisan make:auth
+
+	// From laravel 6.0
+
+	composer require laravel/ui
+	php artisan ui:auth
+
+- php artisan down // for maintenance mode
+- php artisan up //revert
+
+- php artisan serve
+
+- For creating controller:-
+
+	php artisan make:controller CreatesController
+
+- For controller with resource
+
+	php artisan make:controller CreatesController --resource
+
+- For controller with resource and model  import
+
+	php artisan make:controller CreatesController --resource --model=Company
+
+- For creating model (-m is used for creating model along with migration):-
+
+	php artisan make:model Article -m
+
+- For creating migration
+
+	php artisan make:migration table_name_in_plural
+	php artisan make:migration table_name_in_plural --create=articles //create tablename inside migration
+
+- Will create table in database
+
+	php artisan migrate
+	php artisan migrate:refresh
+
+
+Special note:- During migration, error comes
+
+[Illuminate\Database\QueryException]
+SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table users add unique users_email_unique(email))
+
+To solve add the below code in appserviceprovider
+
+    use Illuminate\Support\Facades\Schema;
+
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+
+-------------------------------------
+
+- To interact with database for laravel we can use tinker
+
+	php artisan tinker
+
+- Working with tinker
+
+	App\Post::count() // count number of posts
+
+	$post = new App\Post(); //create instance of post model first
+
+	$post->title = 'Post one';
+
+	$post->body = 'Post one body';
+
+	$post->save();
+
+- For using laravel way forms
+
+	composer require laravelcollective/html //this didn't work for me, version issue
+	composer require "laravelcollective/html":"^5.5" //this worked for me coz my laravel version is 5.5.45
+
+	This will download LaravelCollective 5.8.0. Steps for the config/app.php file,
+
+	In providers, add: Collective\Html\HtmlServiceProvider::class,
+
+	In aliases, add:
+	'Form' => Collective\Html\FormFacade::class,
+	'Html' => Collective\Html\HtmlFacade::class,
+
+- For adding ckeditor
+
+	composer require unisharp/laravel-ckeditor
+
+	In providers, add: Unisharp\Ckeditor\ServiceProvider::class,
+
+	Publish the resources
+
+		php artisan vendor:publish --tag=ckeditor
+
+		Default way (initiate by name or id) :
+
+			<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+			<script>
+				CKEDITOR.replace( 'article-ckeditor' );
+			</script>
+
+		Or if you want to initiate by jQuery selector :
+
+			<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+			<script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+			<script>
+				$('textarea').ckeditor();
+				// $('.textarea').ckeditor(); // if class is prefered.
+			</script>
+
+- Create storage link in public folder for accessing files through browser
+
+	php artisan storage:link
+
+///////////////////  Laravel Api  ////////////////
+
+- To create seeder
+
+	php artisan make:seeder ArticlesTableSeeder
+
+- To call seed
+
+	php artisan db:seed
+
+- To create factory
+
+	php artisan make:factory ArticleFactory
+
+- To create resource
+
+	php artisan make:resource Article
+
+- If any database/config issue comes run
+
+	php artisan config:clear
+
+	Stop artisan serve and start again
+
+///////////////////  Laravel Vue.js  ////////////////
+
+- install node_modules
+
+	npm install
+	npm install -g npm@5.6.0 // for me installation was not happening so i googled and used this command and done npm install again then it worked
+	npm install ajv // i have done this also, not sure why
+
+
+- After changing the css/other you should compile it
+
+	npm run dev
+
+- Automatically run the css/other changes
+
+	npm run watch
+
+////////////////////////////////////////////////////
+
+- Image manipulation library:-
+
+	composer require intervention/image

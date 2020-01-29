@@ -1,0 +1,147 @@
+////////////////////////////////////////////////////////- Basic setup starts here -/////////////////////////////////////////////////////////
+
+sudo apt-get install npm
+mkdir reactApp
+cd reactApp
+npm init
+npm install react --save
+npm install react-dom --save
+npm install webpack webpack-dev-server webpack-cli --save
+npm install babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin --save-dev
+npm install babel-preset-es2015 --save-dev
+
+type nul > index.html
+type nul > App.js
+type nul > main.js
+type nul > webpack.config.js
+type nul > .babelrc
+
+Pasted below script to webpack.config.js
+
+---------------------------------------------------------------
+
+    const path = require('path');
+    const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+    module.exports = {
+       entry: './main.js',
+       output: {
+          path: path.join(__dirname, '/bundle'),
+          filename: 'index_bundle.js'
+       },
+       devServer: {
+          inline: true,
+          port: 8080
+       },
+       module: {
+          rules: [
+             {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                   presets: ['es2015', 'react']
+                }
+             }
+          ]
+       },
+       plugins:[
+          new HtmlWebpackPlugin({
+             template: './index.html'
+          })
+       ]
+    }
+
+----------------------------------------------------------------
+
+Replace the script default content with below content
+
+----------------------------------------------------------------
+
+  "start": "webpack-dev-server --mode development --open --hot",
+  "build": "webpack --mode production"
+
+----------------------------------------------------------------
+
+
+Step 7 - index.html
+
+This is just regular HTML. We are setting div id = "app" as a root element for our app and adding index_bundle.js script, which is our bundled app file.
+
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+      <meta charset = "UTF-8">
+      <title>React App</title>
+   </head>
+   <body>
+      <div id = "app"></div>
+      <script src = 'index_bundle.js'></script>
+   </body>
+</html>
+
+----------------------------------------------------------------
+
+Step 8 − App.jsx and main.js
+
+This is the first React component. We will explain React components in depth in a subsequent chapter. This component will render Hello World.
+
+App.js
+
+----------------------------------------------------------------
+
+import React, { Component } from 'react';
+class App extends Component{
+   render(){
+      return(
+         <div>
+            <h1>Hello World</h1>
+         </div>
+      );
+   }
+}
+export default App;
+
+----------------------------------------------------------------
+
+We need to import this component and render it to our root App element, so we can see it in the browser.
+
+main.js
+
+----------------------------------------------------------------
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.js';
+
+ReactDOM.render(<App />, document.getElementById('app'));
+
+----------------------------------------------------------------
+
+Note − Whenever you want to use something, you need to import it first. If you want to make the component usable in other parts of the app, you need to export it after creation and import it in the file where you want to use it.
+
+To create bundle folder
+----------------------------------------------------------------
+
+npm run build
+
+----------------------------------------------------------------
+
+////////////////////////////////////////////////////////- Basic setup ends here -/////////////////////////////////////////////////////////
+
+Some error regarding babel-core was coming i found below code and worked properly after that:-
+
+npm install --save-dev @babel/core @babel/preset-env
+
+npm install babel-preset-es2015 --save-dev
+
+npm install --save-dev babel-loader@^7 // if some babel version are different make it same by downloading same version
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+To install router:-
+
+npm install react-router
