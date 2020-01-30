@@ -9,3 +9,8 @@ E-commerce website sample:-
 Seeder/Factory setup:-
 
     https://codebriefly.com/basic-use-model-factories-laravel/
+
+Dependency Injection :-
+
+    https://www.amitmerchant.com/constructor-method-injection-laravel/
+    http://php-di.org/doc/understanding-di.html
