@@ -1,0 +1,6 @@
+
+https://www.itsolutionstuff.com/post/how-to-create-dynamic-sitemap-in-php-codeigniterexample.html
+
+https://stackoverflow.com/questions/11186051/sitemap-generation-with-codeigniter
+
+Mention about cron job for sitemap :- https://stackoverflow.com/questions/16749133/creating-dynamic-sitemaps-with-codeigniter

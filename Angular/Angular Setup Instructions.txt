@@ -1,0 +1,15 @@
+
+npm install @angular/cli -g
+
+ng new [project-name]
+
+// Version
+ng --version
+
+// To test the possible
+ng new example --dry-run
+
+ng generate component [name]
+
+// Run
+ng serve

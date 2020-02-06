@@ -1,0 +1,9 @@
+
+SET global log_output = 'FILE';
+SET global general_log_file='/var/log/mysql/mysql.log';
+SET global general_log = 1;
+
+
+can be turned off with:-
+
+SET global general_log = 0;
