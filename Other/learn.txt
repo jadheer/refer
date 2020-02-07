@@ -105,6 +105,12 @@ GROUP BY
 HAVING
    total > 1000;
 
+-------------------------------------------------
+|||||||||| Get the time difference from db itself
+-------------------------------------------------
+
+TIMESTAMPDIFF(MONTH, date_of_joining , CURDATE()) AS anniversary_months
+
 ***
 PHP
 ***
