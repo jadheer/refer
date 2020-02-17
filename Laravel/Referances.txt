@@ -23,4 +23,5 @@ Roles and permissions:-
 
     https://www.youtube.com/watch?v=ThrOk6wekEI
     https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
+    https://morioh.com/p/3971310775ea // Other good tutorial
     https://docs.spatie.be/laravel-permission/v3/installation-laravel/
