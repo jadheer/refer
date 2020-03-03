@@ -1,0 +1,41 @@
+Get mongo db log:-
+sudo tail -f /var/log/mongodb/mongod.log
+
+To start mongod:-
+sudo service mongod start
+To connect to mongo cli:-
+mongo
+Mongo db commands:-
+show dbs
+use cms
+show collections / show tables
+db.posts.find()
+db.posts.drop();
+db.posts.find().pretty(); //Proper readable format
+
+To begin a project:-
+npm init
+
+npm i express bcryptjs // For login auth
+npm i express-handlebars // It is a type of template engine ex:- jade
+npm i method-override
+npm install faker // To create fake data
+npm i express-fileupload // To upload file
+npm i express-session // To use sessions
+npm i connect-flash // To create flash messages
+npm i moment // For date and time formatting
+npm install passport passport-local // It is a type of authentication
+npm install mongoose-url-slugs // To make create slug automatically
+npm i uuid // To create timestamp and random string
+
+npm i express
+npm i mongoose // For using mongoose database
+npm i formidable // Used for file uploads
+npm i jsonwebtoken // To generate token during login
+npm i express-jwt // To secure the route / will check if the user has valid token
+npm i body-parser // The data posted from form or postman cannot directly recognize by express, submitted data will show as undefined, so we installed and used this.
+npm i cookie-parser // To read body of cookie like body parser for form body
+npm i lodash // Used for updated data by finding delta
+npm i morgan // To show routes called into the console, used as middleware
+npm i dotenv // To read env variables
+npm i express-validator // To validate the posted data
