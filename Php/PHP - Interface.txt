@@ -1,0 +1,79 @@
+In PHP, the interface blocks which declares set of functions to be defined with a class to implement this interface. 
+A class can extend more than one interface, thereby, we can simulate multiple inheritances in PHP. 
+Interfaces are defined in the same way as a class, but with the interface keyword replacing the class keyword and without any of the methods having their contents defined. 
+To implement an interface, the implements operator is used. 
+All methods in the interface must be implemented within a class; failure to do so will result in a fatal error. 
+Classes may implement more than one interface if desired by separating each interface with a comma.
+
+Interfaces resemble abstract classes in that they include abstract methods that the programmer must define in the classes that inherit from the interface. 
+In this way, interfaces contribute to code organization because they commit the child classes to abstract methods that they should implement. 
+The use of interfaces becomes very helpful when we work in a team of programmers and want to ensure that all the programmers write the methods that they should work on, or even in the case of a single programmer that wants to commit himself to write certain methods in the child classes.
+
+Key point of interfaces:
+Interfaces can include abstract methods and constants, but cannot contain concrete methods and variables.
+All the methods in the interface must be in the public visibility scope.
+A class can implement more than one interface, while it can inherit from only one abstract class.
+
+Let' create an interface and implement it with a simple example.
+
+<?php
+   Interface MyInterface {
+      public function getName();
+      public function getAge();
+   }
+   class MyClass implements MyFirstInterface{
+      public function getName() {
+            echo "My name A".'<br>';
+      }
+      public function getAge(){
+            echo "My Age 12";
+      }
+   }
+   $obj = new MyClass;
+   $obj->getName();
+   $obj->getAge();
+?>
+
+Explanation:
+Here we have declared an interface MyFirstInterface with two methods getName and getAge inside it without any content. Then the class MyClass implements this interface and uses the available methods according to requirement.
+
+Let's learn some important Characteristic of the interface:
+
+An interface comprises of methods that have no content, which means the interface methods are abstract methods.
+Every one of the methods in interfaces must have public visibility scope.
+Interfaces are not quite the same as classes as the class can inherit from one class but the class can implement one or more interfaces.
+No variables cant be present inside interface.
+Note:
+We can achieve multiple inheritances utilizing interface because a class can implement more than one interface whereas it can extend only one class.
+
+Example
+Let's test this with a simple example.
+
+<?php
+   interface a{
+      public function printData();
+   }
+   interface b{
+      public function getData();
+   }
+   interface c extends a, b{
+      public function addData();
+   }
+   class d implements c{
+      public function printData(){
+         echo "I am printing";
+      }
+      public function getData(){
+         echo "I am reading data";
+      }
+      public function addData(){
+         echo "I am adding"
+      }
+   }
+   $myobj = new class d();
+   $myobj->printData();
+   $myobj->addData();
+?>
+
+Explanation :
+Here we have declared three interfaces i.e 'interface a',' interface b', 'interface c'.In this case interface c also extends the previous two interfaces. Then we have declared a class that implements only the interface c, but as interface c extends the previous two interfaces, all the methods declared in the 'interface a', 'interface b' and 'interface c'  are available for the use in class d. This is how we can achieve multiple inheritances by implementing the interface.
