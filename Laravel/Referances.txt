@@ -14,3 +14,14 @@ Dependency Injection :-
 
     https://www.amitmerchant.com/constructor-method-injection-laravel/
     http://php-di.org/doc/understanding-di.html
+
+Implement form request for validation
+
+    https://medium.com/@konafets/a-better-place-for-your-validation-rules-in-laravel-f5e3f5b7cc
+
+Roles and permissions:-
+
+    https://www.youtube.com/watch?v=ThrOk6wekEI
+    https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
+    https://morioh.com/p/3971310775ea // Other good tutorial
+    https://docs.spatie.be/laravel-permission/v3/installation-laravel/

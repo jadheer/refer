@@ -1,0 +1,58 @@
+- Use of $(document).ready();
+    The jQuery document ready function executes when the DOM (Document Object Model) is completely loaded in the browser. jQuery document ready is used to initialize jQuery/JavaScript code after the DOM is ready, and is used most times when working with jQuery.
+    ex:-
+        $(document).ready(function(){
+            $("div").click(function(){
+                $(this).hide();
+            });
+        });
+
+- .val() vs .html() vs .text()
+    .val() is used to get/replace input elements values in jQuery, alternative in JS is .value.
+    .html() is used to get/replace the whole markup inside an element, not input elements.
+    .text() is used almost the same as JS innertHTML, only it gets/replaces the text inside an element, not all the tags etc. It's basically the equivalent of JS innerText
+
+
+- jQuery append() function
+
+    The append (content) method appends content to the inside of every matched element.
+        content − Content to insert after each target. This could be HTML or Text content
+
+- jQuery appendTo() function
+
+    The appendTo (selector) method appends all of the matched elements to another, specified, set of elements.
+        selector − This is the target to which the content will be appended.
+
+- Difference between JavaScript window.onload event and jQuery ready function?
+    JavaScript onload event not only waits for DOM to be created but also waits until all external resources are fully loaded including heavy images, audios and videos.
+    On the other hand jQuery ready() function only wait for DOM tree, and does not wait for images or external resource loading, means faster execution. Another advantage of using jQuery $(document).ready() is that you can use it multiple times in your page, and browser will execute them in the order they appear in HTML page, as opposed to onload technique, which can only be used for a single function.
+
+- How do you find all selected options of HTML select tag?
+    You can use following jQuery selector to retrieve all selected options of <select> tag with multiple=true :
+        $('[name=NameOfSelectedTag] :selected')
+
+    This code uses attribute selector in combination of :selected selector, which returns only selected options. You can tweak this and instead of name, you can even use id attribute to retrieve <select> tag.
+
+- What is each() function in jQuery? How do you use it?
+    each() function is like Iterator in Java, it allows you to iterate over a set of elements. You can pass a function to each() method, which will be executed for each element from the jQuery object, on which it has been called. This question sometime asked as follow-up of previous question e.g. how to show all selected options in alert box. We can use above selector code to find all selected option and than further can use each() method to print them in alert box, one by one, as shown below:
+
+    $('[name=NameOfSelectedTag] :selected').each(function(selected){
+            alert($(selected).text());
+    });
+
+    text() method returns text for that option.
+
+- How do you add an HTML element in DOM tree?
+    You can use jQuery method appendTo() to add an HTML element in DOM tree. This is one of the many DOM manipulation method jQuery provides. You can add an existing element or a new HTML element, appendTo() add that method in the end of a particular DOM element.
+
+- Differences between detach(), hide() and remove() - jQuery
+
+    hide() sets the matched elements' CSS display property to none.
+    remove() removes the matched elements from the DOM completely.
+    detach() is like remove(), but keeps the stored data and events associated with the matched elements.
+
+    To re-insert a detached element into the DOM, simply insert the returned jQuery set from detach():
+
+    var span = $('span').detach();
+    ...
+    span.appendTo('body');

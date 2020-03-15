@@ -1,0 +1,32 @@
+Install package:-
+
+    composer require spatie/laravel-permission
+
+Add in providers config/app.php
+
+    Spatie\Permission\PermissionServiceProvider::class,
+
+Publish:-
+
+    php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
+
+Migrate:-
+
+    php artisan migrate
+
+Publish:-
+
+    php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
+
+Install html collective for forms
+
+    composer require laravelcollective/html
+
+Add in providers config/app.php
+
+    Collective\Html\HtmlServiceProvider::class,
+
+Add in providers config/app.php alias
+
+    'Form' => Collective\Html\FormFacade::class,
+    'Html' => Collective\Html\HtmlFacade::class,

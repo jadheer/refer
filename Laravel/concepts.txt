@@ -1,0 +1,17 @@
+- what are mutators and accessors in laravel?
+
+    Accessors create a "fake" attribute on the object which you can access as if it were a database column. So if your person has first_name and last_name attributes, you could write:
+
+    public function getFullNameAttribute()
+    {
+      return $this->first_name . " " . $this->last_name;
+    }
+    Then you can call $user->full_name and it will return the accessor. It converts the function name into a snake_case attribute, so getFooBarBazAttribute function would be accessible through $user->foo_bar_baz.
+
+    Mutator is a way to change data when it is set, so if you want all your emails in your database to be lowercase only, you could do:
+
+    public function setEmailAttribute($value)
+    {
+      $this->attributes['email'] = strtolower($value);
+    }
+    Then if you did $user->email = "EMAIL@GMAIL.com"; $user->save(); in the database it would set  email@gmail.com

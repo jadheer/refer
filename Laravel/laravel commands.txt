@@ -42,6 +42,14 @@ Steps did for installing and using laravel:-
 
 	php artisan make:model Article -m
 
+- For creating middleware
+
+	php artisan make:middleware AdminMiddleware
+
+- For creating form request
+
+	php artisan make:request PostStoreRequest
+
 - For creating migration
 
 	php artisan make:migration table_name_in_plural
@@ -134,17 +142,22 @@ To solve add the below code in appserviceprovider
 
 	php artisan make:seeder ArticlesTableSeeder
 
-- To call seed
-
-	php artisan db:seed
-
 - To create factory
 
 	php artisan make:factory ArticleFactory
 
+- To call seed
+
+	composer dump-autoload
+	php artisan db:seed
+
 - To create resource
 
 	php artisan make:resource Article
+
+- To run the seed
+
+	php artisan db:seed
 
 - If any database/config issue comes run
 
@@ -174,3 +187,8 @@ To solve add the below code in appserviceprovider
 - Image manipulation library:-
 
 	composer require intervention/image
+
+
+/////////////////////// To load css and js, after basic setup run //////////////////////
+
+	npm install && npm run dev
