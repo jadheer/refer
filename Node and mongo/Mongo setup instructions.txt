@@ -1,0 +1,20 @@
+Mongo Installation guide:-
+  https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+Mongo Compass installation:-
+  https://docs.mongodb.com/compass/current/install/
+
+Get mongo db log:-
+sudo tail -f /var/log/mongodb/mongod.log
+
+To start mongod:-
+sudo service mongod start
+To connect to mongo cli:-
+mongo
+Mongo db commands:-
+show dbs
+use cms
+show collections / show tables
+db.posts.find()
+db.posts.drop();
+db.posts.find().pretty(); //Proper readable format
