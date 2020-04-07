@@ -56,6 +56,10 @@ userSchema.methods = {
       return this.encryptPassword(plainText) == this.hashed_password
     },
 
+    adminAuthenticate  : function(plainText){
+      return this.encryptPassword(plainText) == this.hashed_password && this.isAdmin == 1
+    },
+
     encryptPassword : function(password){
         if(!password) return "";
         try{

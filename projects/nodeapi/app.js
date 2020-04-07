@@ -11,7 +11,7 @@ const cors = require("cors");
 dotenv.config();
 
 //db
-mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true , useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true , useNewUrlParser: true , useFindAndModify: false })
 .then(()=>console.log("DB Connected"));
 
 mongoose.connection.on('error',err=>{

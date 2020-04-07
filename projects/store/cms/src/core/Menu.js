@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {signout, isAuthenticated} from '../auth';
+// import {products} from '../products';
 
 const isActive = (history,path) => {
     if(history.location.pathname === path){
@@ -38,6 +39,15 @@ const Menu = ({history}) => ( // const Menu = (props.history) => (
                 <li className="nav-item">
                     <a className="nav-link">{isAuthenticated().user.name}</a>
                 </li>
+
+                <li className="nav-item">
+                    <Link className="nav-link" style={isActive(history,"/products")} to="/products/listing">Products Listing</Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link className="nav-link" style={isActive(history,"/add_product")} to="/product/add">Add Product</Link>
+                </li>
+
             </>
           )}
 

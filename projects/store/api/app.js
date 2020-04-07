@@ -18,9 +18,10 @@ mongoose.connection.on('error',err=>{
 });
 
 // Routes
-
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/user');
+const authRoutes        = require('./routes/auth');
+const userRoutes        = require('./routes/user');
+const adminAuthRoutes   = require('./routes/adminAuth');
+const productRoutes     = require('./routes/products');
 
 //Middleware
 app.use(morgan('dev'));
@@ -29,6 +30,8 @@ app.use(bodyParser.json());
 app.use(expressValidator());
 app.use(cors());
 
+app.use("/",productRoutes);
+app.use("/",adminAuthRoutes);
 app.use("/",userRoutes);
 app.use("/",authRoutes);
 app.use(function (err, req, res, next) {

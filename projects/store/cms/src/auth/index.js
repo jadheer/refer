@@ -14,7 +14,7 @@ export const signup = (user) => {
 }
 
 export const signin = (user) => {
-    return fetch("http://localhost:8080/signin",{
+    return fetch("http://localhost:8080/admin/signin",{
         method:"POST",
         headers:{
             Accept:"application/json",
@@ -39,7 +39,7 @@ export const signout = (next) => {
   if(typeof window !== "undefined"){
     localStorage.removeItem("jwt");
     next();
-    return fetch("http://localhost:8080/signout",{
+    return fetch("http://localhost:8080/admin/signout",{
       method:"GET"
     })
     .then(response => {
