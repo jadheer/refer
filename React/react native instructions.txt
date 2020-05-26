@@ -5,25 +5,35 @@ npm install  -g react-native-cli
 react-native init showrtestway
 
 //create a file in android folder with name local.properties and add sdk path
-sdk.dir = C:\\Users\\acer\\AppData\\Local\\Android\\sdk
+sdk.dir = C:\\Users\\acer\\AppData\\Local\\Android\\sdk // For windows
+
+sdk.dir=/home/jadheer/Android/Sdk // For ubuntu
 
 //added a path to user varibles
 C:\Users\acer\AppData\Local\Android\sdk\platform-tools
 
 // this will run the android application to connected device
-react-native run-android
+Run below 2 commands one by one
 
-react-native start / npm start
+  npx react-native run-android // This will install the app
+
+  react-native start / npm start
+
+
 
 Issues and fixes:-
 
-npm cache clean --force 
-npm start -- --reset-cache
+  npm cache clean --force
+  npm start -- --reset-cache
 
-npm uninstall -g npm
+  npm uninstall -g npm
 
-npm install react-router-native
-npm install react-navigation
+  npm install react-router-native
+  npm install react-navigation
+
+///////////////////////////////////////
+
+If the app is not working, always check the node version install in the system as well as it is supporting current react-native version.
 
 ///////////////////////////////////////
 Wifi debugging:-
@@ -44,8 +54,29 @@ adb connect 192.168.43.82
 adb shell ifconfig //display connected device ip
 adb devices //display connected devices
 
+//////////////////////////////////////////////
 
-After installing an app got to option->dev settings->debug server host & port for device and add wifi ip address of the system with :8081
+To connect to local server from emulator or real device
+
+adb reverse tcp:8000 tcp:8000
+
+///////////////////////////////////////////////
+
+Showing connected device offline, no matter what i do,
+
+netstat -tulpn|grep 5555 // Default port the emulator runs on
+netstat -tulpn|grep 5554 // Or may be this port
+
+Or running any of above command results in below result:-
+
+tcp        0      0 127.0.0.1:5555          0.0.0.0:*               LISTEN      10868/qemu-system-x
+tcp6       0      0 ::1:5555                :::*                    LISTEN      10868/qemu-system-x
+
+So kill that port listening, in my case it is 10868
+
+sudo kill -9 10868 //
+
+After installing an app go to option->dev settings->debug server host & port for device and add wifi ip address of the system with :8081
 
 
 ///////////////////////////////////////////////////

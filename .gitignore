@@ -2,3 +2,8 @@
 /projects/reactf/node_modules
 /projects/store/api/node_modules
 /projects/store/cms/node_modules
+/projects/room/node_modules
+/projects/groc_app/node_modules
+/projects/groc/node_modules
+/projects/calc/node_modules
+/projects/nav/node_modules

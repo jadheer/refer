@@ -1,0 +1,20 @@
+Check the connectivity:-
+
+  https://check.torproject.org/
+
+Get the possible fingerprint in bits
+Atleast 32 will be enough to trace:-
+
+  https://panopticlick.eff.org/
+
+Flasher to usb
+
+  https://www.balena.io/etcher/
+
+Os for usb
+
+  https://tails.boum.org/
+
+cnd
+
+  http://gjobqjj7wyczbqie

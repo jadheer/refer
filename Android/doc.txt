@@ -1,0 +1,32 @@
+For running emulator:-
+
+ cd ~/Android/Sdk
+ ./emulator/emulator -list-avds   /// It will list all the available devices
+ ./emulator/emulator -avd Pixel_2_API_28 // It will start device named Pixel_2_API_28
+
+
+
+If adb is not found, please install adb and start adb server, documentation below:
+
+=> https://linuxtechlab.com/install-adb-fastboot-ubuntu/
+
+
+Basic commands on adb:-
+
+=>  adb start-server
+=>  adb kill-server
+=>  adb devices // adb shell
+=>  adb reconnect
+
+
+
+Steps for running app successfully:-
+
+1. Start the adb server
+    adb start-server
+
+2. Start the emulator
+    Steps given in top
+
+3. List adb devices
+    adb devices
