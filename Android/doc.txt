@@ -30,3 +30,14 @@ Steps for running app successfully:-
 
 3. List adb devices
     adb devices
+
+
+List all packages in the connected device:-
+
+  adb shell pm list packages
+  adb uninstall package_name_goes_here
+
+
+
+List all packages in the connected device ( last "map" string can be replace with any keyword for searching ):-
+  adb shell pm list packages | grep -i map

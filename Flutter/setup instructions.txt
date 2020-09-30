@@ -1,0 +1,8 @@
+Dependancy to install flutter:-
+
+  sudo apt update
+  sudo apt install snapd
+
+Install flutter:-
+
+  sudo snap install flutter --classic

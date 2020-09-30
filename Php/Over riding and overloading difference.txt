@@ -1,0 +1,25 @@
+1. Over riding and overloading difference
+2. Polymorphism
+3. abstact classes
+4. interface
+5. mvc pros and cons
+6. how to define constants and different types
+7. magic methods
+
+
+db:-
+
+union and syntax
+triggers
+types of joins
+
+Codeigniter:-
+5. Hooks and use
+
+Mongo:
+6. name of database, table, rows in mongo
+7. show databases
+8. show all rows of a table
+
+es:-
+9. Display all content from an index sort by id desc

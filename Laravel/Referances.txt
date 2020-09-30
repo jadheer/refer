@@ -25,3 +25,8 @@ Roles and permissions:-
     https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
     https://morioh.com/p/3971310775ea // Other good tutorial
     https://docs.spatie.be/laravel-permission/v3/installation-laravel/
+
+
+Laravel passport authentication:-
+
+    https://medium.com/modulr/create-api-rest-with-laravel-7-passport-authentication-part-1-a8198e5d0a9

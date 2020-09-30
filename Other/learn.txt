@@ -530,6 +530,18 @@ __toString
     echo $tux;
     I don't use this shortcut often but it's useful to know that it is there.
 
+---------------------------
+|||||||||| Split vs explode
+---------------------------
+
+--------------------------
+|||||||||| Unlink vs unset
+--------------------------
+
+-----------------------------------------------------------------
+|||||||||| session_destroy vs session_unset vs session_unregister
+-----------------------------------------------------------------
+
 ------------------------------
 |||||||||| HTTP Response Codes
 ------------------------------
