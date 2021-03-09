@@ -1,0 +1,43 @@
+1. Clone project to html folder
+2. sudo cp .env.example .env
+3. Give appropriate ownership and permissions
+
+    sudo usermod -a -G www-data `whoami`
+
+    sudo chown root:ubuntu /var/www
+    sudo chmod 755 /var/www/
+
+    sudo chown -R www-data:ubuntu /var/www/html/jabs
+    sudo chmod -R 774 /var/www/html/jabs
+
+    sudo chmod -R 0777 storage/
+    sudo chmod -R 0777 bootstrap/cache/
+
+4. composer install
+
+5. php artisan key:generate
+
+6. To ignore permission changes in directory for git
+    git config core.fileMode false
+
+7. https://laraveldaily.com/how-to-deploy-laravel-projects-to-live-server-the-ultimate-guide/
+
+8. If the page other that home page does not open
+    https://stackoverflow.com/questions/31435283/laravel-5-only-root-route-works
+
+9.Laravel Optimisation:
+
+  php artisan config:cache, for clearing - php artisan config:clear
+  php artisan route:cache, for clearing - php artisan route:clear
+  Php artisan optimize --force
+
+
+10. Laravel Folder Permissions:
+
+    See what is Nginx user - /etc/nginx/nginx.conf > user value
+    sudo find /path/to/laravel -type f -exec chmod 644 {} \;
+    sudo find /path/to/laravel -type d -exec chmod 755 {} \;
+    cd /path/to/laravel
+    sudo chgrp -R www-data storage bootstrap/cache
+    sudo chmod -R ug+rwx storage bootstrap/cache
+    sudo usermod -a -G www-data ubuntu

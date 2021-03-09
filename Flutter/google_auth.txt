@@ -1,0 +1,4 @@
+1. https://console.developers.google.com/
+2. Oauth Consent screen
+3. External
+4. Give name and logo

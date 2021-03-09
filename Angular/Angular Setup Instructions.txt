@@ -9,7 +9,15 @@ ng --version
 // To test the possible
 ng new example --dry-run
 
-ng generate component [name]
+// To add a component
+ng generate component [component_name]
+ng g c [component_name]
+
+// To add a class
+ng g class [class_name]
+
+// To add a service
+ng g service [service_name]
 
 // Run
 ng serve

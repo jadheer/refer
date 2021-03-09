@@ -1,0 +1,41 @@
+1. Installing NVM (Node Version Manager) script
+
+    To download and install the nvm script run:
+
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+    The command above will clone the NVM repository from Github to the ~/.nvm directory:
+
+    As the output above says, you should either close and reopen the terminal or run the commands to add the path to nvm script to the current shell session. You can do whatever is easier for you.
+
+    Once the script is in your PATH, verify that nvm was properly installed by typing:
+
+    nvm --version
+    0.34.0
+
+2. Installing Node.js and npm
+    Now that the nvm is installed you can install the latest available version of Node.js, by typing:
+
+    nvm install node
+
+
+3. Check node version
+
+    node --version
+
+4. Let’s install two more versions, the latest LTS version and version 8.10.0
+
+    nvm install --lts
+    nvm install 8.10.0
+
+    To list installed Node.js versions type:
+
+      nvm ls
+
+5. The entry with an arrow on the right (-> v8.10.0) is the Node.js version used in the current shell session and the default version is set to v12.8.1. Default version is the version that will be active when opening new shells.
+
+  You can change the currently active version with:
+    nvm use 10.16.3
+
+  If you want to change the default Node.js version use the following command:
+    nvm alias default 10.16.3

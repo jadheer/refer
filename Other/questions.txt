@@ -1,0 +1,246 @@
+1. Can we store session in api
+2. How logout of session
+    session_unset();
+3. Service container
+
+    The Laravel service container is a powerful tool for managing class dependencies and performing dependency injection. Dependency injection is a fancy phrase that essentially means this: class dependencies are “injected” into the class via the constructor or, in some cases, “setter” methods.
+
+4. Passport
+
+    Laravel Passport is an OAuth 2.0 server implementation for API authentication using Laravel. Since tokens are generally used in API authentication, Laravel Passport provides an easy and secure way to implement token authorization on an OAuth 2.0 server.
+
+5. Traits
+
+    Traits are a mechanism for code reuse in single inheritance languages such as PHP. A Trait is intended to reduce some limitations of single inheritance by enabling a developer to reuse sets of methods freely in several independent classes living in different class hierarchies.
+
+6. What you know about laravel
+
+    Laravel is a web application framework with expressive, elegant syntax. ... Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+
+7. SOLID Principle
+
+    SOLID is an acronym for the first five object-oriented design (OOD) principles
+
+        SOLID stands for:
+
+        S - Single-responsiblity Principle
+                A class should have one and only one reason to change, meaning that a class should have only one job.
+        O - Open-closed Principle
+                Objects or entities should be open for extension but closed for modification.
+        L - Liskov Substitution Principle
+        I - Interface Segregation Principle
+        D - Dependency Inversion Principle
+
+8. Design patterns
+    Singleton
+    Model View Control
+
+9. Session/Cookie
+
+Session:
+
+    IDU is stored on server (i.e. server-side)
+    Safer (because of 1)
+    Expiration can not be set, session variables will be expired when users close the browser. (nowadays it is stored for 24 minutes as default in php)
+    Cookies:
+
+    IDU is stored on web-browser (i.e. client-side)
+    Not very safe, since hackers can reach and get your information (because of 1)
+    Expiration can be set (see setcookies() for more information)
+    Session is preferred when you need to store short-term information/values, such as variables for calculating, measuring, querying etc.
+
+    Cookies is preferred when you need to store long-term information/values, such as user's account (so that even when they shutdown the computer for 2 days, their account will still be logged in). I can't think of many examples for cookies since it isn't adopted in most of the situations.
+
+10. OOPS
+11. Palindrome
+12. Mysql normalisation
+
+    Normalisation is about making sure each table has the only minimal fields and to get rid of dependencies. Imagine you have an employee record, and each employee belongs to a department. If you store the department as a field along with the other data of the employee, you have a problem - what happens if a department is removed? You have to update all the department fields, and there's opportunity for error. And what if some employees does not have a department (newly assigned, perhaps?). Now there will be null values.
+
+13. Middleware used other that auth
+
+    IP address whitelist
+    Load db config
+
+14. Artisan commands
+15. Security measures
+        strip_tags, filter_var, Md5 and sha1,mysqli_real_escape_string
+16. Types of attacks: xss, csrf
+
+    An XSS attack, also known as cross-site scripting, refers to the unintended execution of remote code by your web application. For example, an XSS attack can occur when your web application accepts user input and prints it directly to the web page. Whenever a malicious user includes HTML, JavaScript, or even CSS, your web application will execute the remote code.
+
+        What’s the Solution? To prevent a cross-site scripting attack, make sure to escape any user input to avoid the remote execution of code.
+
+
+    CSRF
+        When a website requests data from another website on behalf of a user
+
+17. Microservices
+
+    It means you are developing your entire application in small, independent, loosely coupled components. It is domain driven and each micro-service should perform a single business requirement.
+
+18. facades
+
+    FACADE :- The Facade pattern is a software design pattern which is often used in object oriented programming. A facade is, in fact, a class wrapping a complex library to provide a simpler and more readable interface to it.
+
+    -------------------
+
+        The facade gives the “static” interface to all the classes available in the service container of the application. Laravel comes along with many interfaces that provide the access to almost all the features of Laravel.
+
+        All the facades are defined in the namespace Illuminate\Support\Facades for easy accessibility and usability.
+
+
+    -------------------
+
+        App
+        Artisan
+        Auth
+        Blade
+        Cache
+        DB
+        Request
+        Response
+        Route
+        Schema
+        Session
+        Gate
+        Storage
+        URL
+        Validator
+        View
+
+19. composer.json vs composer.lock
+
+    https://medium.com/@favoriabs/composer-install-vs-composer-update-3737357c35a7
+
+20. Constraints
+
+    MySQL CONSTRAINTS are used to limit the type of data that can be inserted into a table.
+
+    MySQL CONSTRAINTS can be classified into two types - column level and table level.
+
+    The column level constraints can apply only to one column where as table level constraints are applied to the entire table
+
+    MySQL CONSTRAINTs are :
+
+        NOT NULL
+        UNIQUE
+        PRIMARY KEY
+        FOREIGN KEY
+        CHECK
+        DEFAULT
+
+    CASCADE option deletes or updates the row from the parent table (containing PRIMARY KEYs), and automatically delete or update the matching rows in the child table (containing FOREIGN KEYs).
+
+    RESTRICT option bars the removal (i.e. using delete) or modification (i..e using an update) of rows from the parent table.
+
+    MySQL allows you to create a table with SET NULL option. Doing so will delete or update the row from the parent table, and set the foreign key column or columns in the child table to NULL.
+
+    You can use SET NULL for DELETE as well as UPDATE.
+
+21. .env
+
+=> Difference between is_a() , instance_of, get_class()
+
+    get_class check will tell you if given object is of given class. instanceof operator on the other hand will tell you, if given object is of given class OR has that class in it's inheritance tree OR implements given interface.
+
+    Some examples:
+
+    class Parent {}
+    class Child extends Parent {}
+
+    $obj = new Child;
+
+    var_dump($obj instanceof Parent); // true
+    var_dump(get_class($obj) === 'Parent'); // false
+    var_dump($obj instanceof Child); // true
+    var_dump(get_class($obj) === 'Child'); // true
+    So both ways can be used depending on what you need.
+
+    Regarding is_a(), it behaves the same way as instanceof operator, but is know to be a bit slower. In bigger applications the difference in performance will be negligible.
+
+    instanceof offers more flexibility. While is_a() only accepts string as its second argument, instanceof can be passed a string, an object or class identifier.
+
+=> How to use session in laravel?
+
+    1. Retrieving Data from session
+    session()->get('key');
+
+    2. Retrieving All session data
+    session()->all();
+
+    3. Remove data from session
+    session()->forget('key'); or session()->flush();
+
+    4. Storing Data in session
+    session()->put('key', 'value');
+
+=>  How to use cookies in laravel?
+
+    1. How to set Cookie
+    To set cookie value, we have to use Cookie::put('key', 'value');
+
+    2. How to get Cookie
+    To get cookie Value we have to use Cookie::get('key');
+
+    3. How to delete or remove Cookie
+    To remove cookie Value we have to use Cookie::forget('key')
+
+    4. How to check Cookie
+    To Check cookie is exists or not, we have to use Cache::has('key')
+
+
+=> Custom attributes
+
+    The data-* attributes is used to store custom data private to the page or application.
+
+        <ul>
+          <li data-animal-type="bird">Owl</li>
+          <li data-animal-type="fish">Salmon</li>
+          <li data-animal-type="spider">Tarantula</li>
+        </ul>
+
+=> Lifespan of cookie
+
+
+    A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.
+
+        setcookie(name, value, expire, path, domain, secure, httponly);
+
+    The following example creates a cookie named "user" with the value "John Doe". The cookie will expire after 30 days (86400 * 30). The "/" means that the cookie is available in entire website (otherwise, select the directory you prefer).
+
+    We then retrieve the value of the cookie "user" (using the global variable $_COOKIE). We also use the isset() function to find out if the cookie is set:
+
+        <!DOCTYPE html>
+        <?php
+        $cookie_name = "user";
+        $cookie_value = "John Doe";
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+        ?>
+        <html>
+        <body>
+
+        <?php
+        if(!isset($_COOKIE[$cookie_name])) {
+            echo "Cookie named '" . $cookie_name . "' is not set!";
+        } else {
+            echo "Cookie '" . $cookie_name . "' is set!<br>";
+            echo "Value is: " . $_COOKIE[$cookie_name];
+        }
+        ?>
+
+        </body>
+        </html>
+
+=> Cherry pick in git
+
+    Cherry picking in Git means to choose a commit from one branch and apply it onto another.
+
+=> HTML <!DOCTYPE> Declaration
+
+    All HTML documents must start with a <!DOCTYPE> declaration.
+
+    The declaration is not an HTML tag. It is an "information" to the browser about what document type to expect.
+
+    In HTML 5, the declaration is simple:
+        <!DOCTYPE html>

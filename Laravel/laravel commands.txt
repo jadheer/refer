@@ -165,6 +165,20 @@ To solve add the below code in appserviceprovider
 
 	Stop artisan serve and start again
 
+- Any other issue
+
+	php artisan clear-compiled
+
+- All clear
+
+	composer dump-autoload
+	php artisan config:cache
+	php artisan config:clear
+	php artisan clear-compiled
+	php artisan cache:clear
+	php artisan route:cache
+	php artisan view:clear
+
 ///////////////////  Laravel Vue.js  ////////////////
 
 - install node_modules

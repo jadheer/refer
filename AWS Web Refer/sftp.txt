@@ -1,0 +1,8 @@
+for file trasnfer: sftp
+
+
+1. sudo sftp -i /var/www/keys/ion-test-server.key dev@52.3.0.37
+
+2. go to folder needed
+
+3. get filename.tar.gz

@@ -1,3 +1,58 @@
 Well explained interface:-
 
 	https://daylerees.com/php-interfaces-explained/
+
+
+
+
+
+1. Image types in php
+2. constructor vs destructor
+
+  Accepts one or more arguments.
+  No arguments are passed. Its void.
+
+  function name is _construct().
+   function name is _destruct()
+
+  It has same name as the class.
+  It has same name as the class with prefix ~tilda.
+
+  Constructor is involved automatically when the object is created.
+  Destructor is involved automatically when the object is destroyed.
+
+  Used to initialize the instance of a class.
+  Used to de-initialize objects already existing to free up memory for new accomodation.
+
+  Used to initialize data memebers of class.
+  Used to make the object perform some task before it is destroyed.
+
+  Constructors can be overloaded.
+  Destructors cannot be overloaded.
+
+  It is called each time a class is instantiated or object is created.
+  It is called automatically at the time of object deletion .
+
+  Allocates memory.
+  It deallocates memory.
+
+  Multiple constructors can exist in a class.
+  Only one Destructor can exist in a class.
+
+  If there is a derived class inheriting from base class and the object of the derived class is created,
+  the constructor of base class is created and then the constructor of the derived class.
+  The destructor of the derived class is called and then the destructor of base class just the reverse order of
+  constructor.
+
+3. primary key vs unique key
+
+  https://www.geeksforgeeks.org/difference-between-primary-key-and-unique-key/
+
+4. can we use multiple primary key
+
+  No
+
+5. how to increase executing time php
+
+  ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
+  ini_set('max_execution_time', '0'); // for infinite time of execution
