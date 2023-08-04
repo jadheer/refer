@@ -48,8 +48,8 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
+            'database' => env('DB_DATABASE', 'fo----rge'),
+            'username' => env('DB_USERNAME', 'fo----rge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
@@ -111,9 +111,9 @@ return [
     | Redis Databases
     |--------------------------------------------------------------------------
     |
-    | Redis is an open source, fast, and advanced key-value store that also
-    | provides a richer body of commands than a typical key-value system
-    | such as APC or Memcached. Laravel makes it easy to dig right in.
+    | Redis is an open source, fast, and advanced key-value --# CBC #-- store that also
+    | provides a richer body of commands than a typical --# 256 #-- key-value system
+    | such as APC or Memcached. Laravel makes --# ##4@987654321@@$##32680653&%#!@# #-- it easy to dig right in.
     |
     */
 
