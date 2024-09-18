@@ -10,10 +10,10 @@ CREATE TABLE `address_postgres` (
   `addr_id` varchar(255) NOT NULL,
   `address_line1` varchar(255) DEFAULT NULL,
   `address_line2` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
+  `city` varchar(125) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
-  `pincode` varchar(255) DEFAULT NULL,
-  `state` varchar(255) DEFAULT NULL,
+  `pincode` varchar(10) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`addr_id`)
 )
 
