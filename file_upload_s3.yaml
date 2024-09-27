@@ -9,7 +9,7 @@ paths:
     post:
       summary: Upload a file to AWS S3
       operationId: uploadFile
-      x-aws-s3-upload: true  # Custom extension to identify AWS S3 uploads
+      x-aws-s3-upload: true
       requestBody:
         required: true
         content:
