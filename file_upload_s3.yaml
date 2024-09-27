@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: AWS File Upload API
+  version: 1.0.0
+  description: API for uploading files to AWS S3
+
+paths:
+  /upload:
+    post:
+      summary: Upload a file to AWS S3
+      operationId: uploadFile
+      x-aws-s3-upload: true  # Custom extension to identify AWS S3 uploads
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                bucketName:
+                  type: string
+                  example: your-bucket
+      responses:
+        '200':
+          description: File uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: File uploaded successfully
+                  fileUrl:
+                    type: string
+                    example: https://your-bucket.s3.amazonaws.com/your-file.jpg
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
