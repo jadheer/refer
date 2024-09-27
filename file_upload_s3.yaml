@@ -9,6 +9,7 @@ paths:
     post:
       summary: Upload a file to AWS S3
       operationId: uploadFile
+      isFileUpload: true
       uploadType: aws-s3
       requestBody:
         required: true
