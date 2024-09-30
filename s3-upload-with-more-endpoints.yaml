@@ -111,8 +111,24 @@ paths:
           description: Product deleted successfully
 components:
   schemas:
-    Error:
+    Product:
       type: object
+      required:
+        - name
+        - price
       properties:
-        message:
+        id:
           type: string
+          example: "12345"
+        name:
+          type: string
+          example: "Laptop"
+        description:
+          type: string
+          example: "A powerful laptop"
+        price:
+          type: number
+          example: 999.99
+        category:
+          type: string
+          example: "Electronics"
