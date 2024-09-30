@@ -109,6 +109,7 @@ paths:
       responses:
         '200':
           description: Product deleted successfully
+		  
 components:
   schemas:
     Product:
