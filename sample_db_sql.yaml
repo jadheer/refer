@@ -1,0 +1,331 @@
+openapi: 3.0.1
+info:
+  title: Employee Management API
+  description: API for managing employees, departments, projects, and their relationships.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /department:
+    get:
+      summary: Get all departments
+      operationId: getAllDepartments
+      responses:
+        '200':
+          description: A list of departments
+    post:
+      summary: Create a new department
+      operationId: createDepartment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+      responses:
+        '201':
+          description: Department created
+
+  /department/{id}:
+    get:
+      summary: Get a department by ID
+      operationId: getDepartmentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Department details
+        '404':
+          description: Department not found
+    put:
+      summary: Update a department by ID
+      operationId: updateDepartment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+      responses:
+        '200':
+          description: Department updated
+        '404':
+          description: Department not found
+    delete:
+      summary: Delete a department by ID
+      operationId: deleteDepartment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Department deleted
+        '404':
+          description: Department not found
+
+  /employee:
+    get:
+      summary: Get all employees
+      operationId: getAllEmployees
+      responses:
+        '200':
+          description: A list of employees
+    post:
+      summary: Create a new employee
+      operationId: createEmployee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                departmentId:
+                  type: string
+      responses:
+        '201':
+          description: Employee created
+
+  /employee/{id}:
+    get:
+      summary: Get an employee by ID
+      operationId: getEmployeeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Employee details
+        '404':
+          description: Employee not found
+    put:
+      summary: Update an employee by ID
+      operationId: updateEmployee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                departmentId:
+                  type: string
+      responses:
+        '200':
+          description: Employee updated
+        '404':
+          description: Employee not found
+    delete:
+      summary: Delete an employee by ID
+      operationId: deleteEmployee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Employee deleted
+        '404':
+          description: Employee not found
+
+  /project:
+    get:
+      summary: Get all projects
+      operationId: getAllProjects
+      responses:
+        '200':
+          description: A list of projects
+    post:
+      summary: Create a new project
+      operationId: createProject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                budget:
+                  type: number
+      responses:
+        '201':
+          description: Project created
+
+  /project/{id}:
+    get:
+      summary: Get a project by ID
+      operationId: getProjectById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project details
+        '404':
+          description: Project not found
+    put:
+      summary: Update a project by ID
+      operationId: updateProject
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                budget:
+                  type: number
+      responses:
+        '200':
+          description: Project updated
+        '404':
+          description: Project not found
+    delete:
+      summary: Delete a project by ID
+      operationId: deleteProject
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Project deleted
+        '404':
+          description: Project not found
+
+  /employee_project:
+    get:
+      summary: Get all employee-project relationships
+      operationId: getAllEmployeeProjects
+      responses:
+        '200':
+          description: A list of employee-project relationships
+    post:
+      summary: Create a new employee-project relationship
+      operationId: createEmployeeProject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                employeeId:
+                  type: string
+                projectId:
+                  type: string
+      responses:
+        '201':
+          description: Employee-project relationship created
+
+  /employee_project/{id}:
+    get:
+      summary: Get an employee-project relationship by ID
+      operationId: getEmployeeProjectById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Employee-project relationship details
+        '404':
+          description: Employee-project relationship not found
+    put:
+      summary: Update an employee-project relationship by ID
+      operationId: updateEmployeeProject
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                employeeId:
+                  type: string
+                projectId:
+                  type: string
+      responses:
+        '200':
+          description: Employee-project relationship updated
+        '404':
+          description: Employee-project relationship not found
+    delete:
+      summary: Delete an employee-project relationship by ID
+      operationId: deleteEmployeeProject
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Employee-project relationship deleted
+        '404':
+          description: Employee-project relationship not found
