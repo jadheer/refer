@@ -1,0 +1,87 @@
+openapi: 3.0.1
+info:
+  title: Employee Management API
+  description: API for managing employees, departments, projects, and their relationships.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /department:
+    get:
+      summary: Get all departments
+      operationId: getAllDepartments
+      responses:
+        '200':
+          description: A list of departments
+    post:
+      summary: Create a new department
+      operationId: createDepartment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+      responses:
+        '201':
+          description: Department created
+
+  /department/{id}:
+    get:
+      summary: Get a department by ID
+      operationId: getDepartmentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Department details
+        '404':
+          description: Department not found
+    put:
+      summary: Update a department by ID
+      operationId: updateDepartment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                location:
+                  type: string
+      responses:
+        '200':
+          description: Department updated
+        '404':
+          description: Department not found
+    delete:
+      summary: Delete a department by ID
+      operationId: deleteDepartment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Department deleted
+        '404':
+          description: Department not found
