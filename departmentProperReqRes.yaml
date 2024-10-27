@@ -37,7 +37,7 @@ paths:
       serviceProvider: ''
       requestBody:
         content:
-          '':
+          application/json:
             schema:
               type: object
               properties: {}
@@ -45,7 +45,7 @@ paths:
         '200':
           description: Successful response
           content:
-            '':
+            application/json:
               schema:
                 type: object
                 properties:
