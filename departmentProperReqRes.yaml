@@ -21,9 +21,11 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
+                  dept_id:
                     type: integer
                   dept_name:
+                    type: string
+                  location:
                     type: string
         '402':
           description: Required
@@ -49,7 +51,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
+                  dept_id:
                     type: integer
                   dept_name:
                     type: string
