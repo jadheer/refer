@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: departmentProperReqRes
+  version: 1.0.0
+paths:
+  /department/{id}:
+    get:
+      pathType: default
+      serviceProvider: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema: ''
+        '402':
+          description: Required
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+  /department:
+    get:
+      pathType: default
+      serviceProvider: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema: ''
+        '402':
+          description: Required
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
