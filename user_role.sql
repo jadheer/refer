@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `sample_db`;
-USE `sample_db`;
+CREATE DATABASE IF NOT EXISTS `ms_generator_db`;
+USE `ms_generator_db`;
 
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
